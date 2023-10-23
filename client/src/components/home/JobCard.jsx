@@ -1,6 +1,6 @@
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
-const JobCard = ({ title, location, salary, skills, experienceLevel }) => {
+const JobCard = ({ title, location, salary, skills, experienceLevel, id }) => {
   return (
     <>
       <div className="bg-gray-100 border border-gray-300 shadow-lg rounded-xl m-4 cursor-pointer p-4 ">
