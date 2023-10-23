@@ -37,9 +37,7 @@ JobSeekr is a full-stack web application that allows users to browse and apply f
   - Mongoose as the ODM (Object Data Modeling)
   - CORS handling
 
-## JobSeekr API Documentation
-
-    (https://documenter.getpostman.com/view/23950566/2s9YRCXrF1)
+## JobSeekr API Documentation (https://documenter.getpostman.com/view/23950566/2s9YRCXrF1)
 
 ## Getting Started
 
