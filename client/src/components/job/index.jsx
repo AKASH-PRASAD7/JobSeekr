@@ -7,10 +7,10 @@ import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const index = () => {
   const { id } = useParams();
+  console.log(id);
   const dispatch = useDispatch();
   const { job, loading, error } = useSelector((state) => state.job);
 
-  console.log(job);
   useEffect(() => {
     dispatch(getJobById(id));
   }, [id]);

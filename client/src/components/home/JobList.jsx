@@ -35,7 +35,18 @@ const Joblist = () => {
         ) : error ? (
           <h1>{error}</h1>
         ) : (
-          data && data.map((job) => <JobCard key={job._id} {...job} />)
+          data &&
+          data.map((job) => (
+            <JobCard
+              title={job.title}
+              salary={job.salary}
+              skills={job.skills}
+              location={job.location}
+              experienceLevel={job.experienceLevel}
+              id={job._id}
+              key={job._id}
+            />
+          ))
         )}
       </div>
     </section>
