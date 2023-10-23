@@ -13,7 +13,7 @@ const initialState = {
   job: {},
   search_jobs: [],
   filter_jobs: [],
-  applied: false,
+  applied: null,
   loading: false,
   error: null,
 };
@@ -26,7 +26,9 @@ const reducer = (state = initialState, action) => {
         jobs: action.payload,
         loading: false,
         error: null,
-        applied: false,
+        applied: null,
+        search_jobs: [],
+        filter_jobs: [],
       };
     case GET_JOB_BY_ID:
       return {
@@ -34,7 +36,9 @@ const reducer = (state = initialState, action) => {
         job: action.payload,
         loading: false,
         error: null,
-        applied: false,
+        applied: null,
+        search_jobs: [],
+        filter_jobs: [],
       };
     case APPLY_JOB:
       return {
@@ -42,6 +46,8 @@ const reducer = (state = initialState, action) => {
         loading: false,
         error: null,
         applied: action.payload,
+        search_jobs: [],
+        filter_jobs: [],
       };
 
     case SEARCH_JOB:
@@ -50,7 +56,9 @@ const reducer = (state = initialState, action) => {
         search_jobs: action.payload,
         loading: false,
         error: null,
-        applied: false,
+        applied: null,
+        jobs: [],
+        filter_jobs: [],
       };
 
     case FILTER_JOB:
@@ -59,7 +67,9 @@ const reducer = (state = initialState, action) => {
         filter_jobs: action.payload,
         loading: false,
         error: null,
-        applied: false,
+        applied: null,
+        jobs: [],
+        filter_jobs: [],
       };
 
     case LOADING:
@@ -67,14 +77,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
-        applied: false,
+        applied: null,
       };
     case ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload,
-        applied: false,
+        applied: null,
       };
     default:
       return state;

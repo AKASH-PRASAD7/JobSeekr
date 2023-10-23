@@ -1,39 +1,90 @@
-Here is an outline for an MVP to meet the requirements:
+# JobSeekr API Documentation (https://documenter.getpostman.com/view/23950566/2s9YRCXrF1)
 
-Backend:
+## Applicants API
 
-Use Node.js and Express to build a REST API
-Endpoints:
-GET /jobs - get list of all jobs
-GET /jobs/:id - get details of a single job
-POST /jobs/:id/apply - apply for a job (save applicant info)
-Use a database like MongoDB to store job info and applicant data
-Document API using Swagger/OpenAPI
-Frontend:
+### Get all Applicants
 
-Use React to build the UI
-Implement the following pages:
-Jobs List Page - displays all jobs, links to Job Details page
-Job Details Page - displays details of a single job, has apply button
-Apply Form - form to apply for a job
-Connect frontend to backend API
-Database:
+- **Route**: `/applicant`
+- **Description**: Get a list of all applicants.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**: None
 
-MongoDB to store:
-Job listings (title, description, etc)
-Applicant data (name, email, etc) when applying
-Testing:
+### Get an Applicant by ID
 
-Jest for unit testing React components
-SuperTest for API integration testing
-Other:
+- **Route**: `/applicant/:id`
+- **Description**: Get an applicant by their unique ID.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**:
+  - `id` (string): The unique ID of the applicant.
 
-Dockerize the app for easy local setup
-Use best practices like modularity, separation of concerns, descriptive naming
-Add Architecture Decision Records to document key decisions
-For an initial MVP, this covers the core functionality. Further enhancements could include:
+### Apply to a Job
 
-User authentication and accounts
-Admin interface to manage job listings
-Email notifications when applying for a job
-Frontend state management with Redux
+- **Route**: `/applicant`
+- **Description**: Apply to a job by submitting applicant details.
+- **Method**: POST
+- **Access**: Public
+- **Parameters**: None
+- **Request Body**:
+  - `name` (string): The name of the applicant.
+  - `email` (string): The email address of the applicant.
+  - `phone` (string): The phone number of the applicant.
+  - `resume` (string): The resume or CV of the applicant.
+  - `jobId` (string): The ID of the job to which the applicant is applying.
+- **Response**:
+  - If successful, returns the newly created applicant.
+
+## Jobs API
+
+### Get all Jobs
+
+- **Route**: `/job`
+- **Description**: Get a list of all job listings.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**: None
+
+### Get a Job by ID
+
+- **Route**: `/job/:id`
+- **Description**: Get a job listing by its unique ID.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**:
+  - `id` (string): The unique ID of the job.
+
+### Search Jobs
+
+- **Route**: `/job/search/:query`
+- **Description**: Search for job listings based on a search query.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**:
+  - `query` (string): The search query.
+
+### Filter Jobs
+
+- **Route**: `/job/filter/query`
+- **Description**: Filter job listings based on skills and experience level.
+- **Method**: GET
+- **Access**: Public
+- **Parameters**: None
+- **Query Parameters**:
+  - `skills` (string): Comma-separated skills for filtering.
+  - `experienceLevel` (string): The experience level for filtering.
+- **Response**:
+  - Returns a list of jobs matching the filter criteria.
+
+### Add a Job
+
+- **Route**: `/job`
+- **Description**: Add a new job listing.
+- **Method**: POST
+- **Access**: Public
+- **Parameters**: None
+- **Request Body**: JSON object representing the job details.
+- **Response**:
+  - If successful, returns the newly created job listing.
+
+---

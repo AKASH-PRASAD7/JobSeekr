@@ -2,6 +2,8 @@ import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Joblisting from "./Joblist";
+import { useDispatch } from "react-redux";
+import { getJobs, filterJob } from "../../redux/job/action";
 import {
   FunnelIcon,
   MinusIcon,
@@ -25,7 +27,7 @@ const filters = [
     name: "Experience",
     options: [
       { value: "entry", label: "Entry Level", checked: false },
-      { value: "intermediate", label: "Intermediate", checked: false },
+      { value: "mid", label: "Intermediate", checked: false },
       { value: "senior", label: "Senior", checked: false },
     ],
   },
@@ -36,23 +38,25 @@ function classNames(...classes) {
 }
 
 const Joblist = () => {
+  const dispatch = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [filterJob, setfilterJob] = useState([]);
+  const [filterJobs, setfilterJob] = useState([]);
+
   const handleCategory = (e) => {
-    let filters = [...filterJob, e.target.value];
-    console.log(filters);
-    setfilterJob(() => [...filters]);
-    if (e.target.checked) {
-      // dispatch(getfilterJobs(filters));
-    } else {
-      let newFilter = filterJob.filter((each) => each != e.target.value);
-      setfilterJob(() => [...newFilter]);
-      if (newFilter.length === 0) {
-        // dispatch(getAllProducts());
-      } else {
-        // dispatch(getfilterJobs(newFilter));
-      }
-    }
+    // let filters = [...filterJobs, e.target.value];
+    // console.log(filters);
+    // setfilterJob(() => [...filters]);
+    // if (e.target.checked) {
+    //   dispatch(filterJob(filters));
+    // } else {
+    //   let newFilter = filterJob.filter((each) => each != e.target.value);
+    //   setfilterJob(() => [...newFilter]);
+    //   if (newFilter.length === 0) {
+    //     dispatch(getJobs());
+    //   } else {
+    //     dispatch(filterJob(newFilter));
+    //   }
+    // }
   };
 
   return (

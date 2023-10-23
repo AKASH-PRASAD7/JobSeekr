@@ -30,21 +30,23 @@ export const getJobById = (id) => async (dispatch) => {
   }
 };
 
-// export const applyJob = (id) => async (dispatch) => {
-//     try {
-//         dispatch({ type: LOADING });
-//         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/applicant`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         });
-//         const data = await res.json();
-//         dispatch({ type: APPLY_JOB, payload: data });
-//     } catch (err) {
-//         dispatch({ type: ERROR, payload: err });
-//     }
-// }
+export const applyJob = (applicant) => async (dispatch) => {
+  try {
+    console.log(applicant);
+    dispatch({ type: LOADING });
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/applicant`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(applicant),
+    });
+    const data = await res.json();
+    dispatch({ type: APPLY_JOB, payload: data });
+  } catch (err) {
+    dispatch({ type: ERROR, payload: err });
+  }
+};
 
 export const searchJob = (search) => async (dispatch) => {
   try {

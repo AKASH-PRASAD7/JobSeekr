@@ -52,14 +52,15 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { name, email, phone, resume, jobId, atsScore } = req.body;
+    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    const { name, email, phone, resume, jobId } = req.body;
 
     const newApplicant = await applicant.create({
       name,
       email,
       phone,
       resume,
-      appliedJobs: [{ jobId: jobId, ATS_SCORE: atsScore }],
+      appliedJobs: [{ jobId: jobId, ATS_SCORE: 7 }],
     });
     if (!newApplicant) {
       return res.status(400).json({ error: "Applicant not created" });

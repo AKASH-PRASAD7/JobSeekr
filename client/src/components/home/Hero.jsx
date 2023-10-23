@@ -1,12 +1,20 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchJob, getJobs } from "../../redux/job/action";
 
 const Hero = () => {
+  const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setSearchInput(inputValue);
-    console.log(`Search Input: ${inputValue}`);
+    if (inputValue === "") dispatch(getJobs());
+    // dispatch(searchJob(searchInput));
+  };
+
+  const handleSearch = () => {
+    dispatch(searchJob(searchInput));
   };
   return (
     <section>
@@ -24,7 +32,10 @@ const Hero = () => {
             value={searchInput}
             onChange={handleInputChange}
           />
-          <button className="bg-black  shadow-lg shadow-slate-950/100 hover:bg-lime-600 font-semibold text-white py-2 px-4 ml-2 rounded-full">
+          <button
+            onClick={() => handleSearch()}
+            className="bg-black  shadow-lg shadow-slate-950/100 hover:bg-lime-600 font-semibold text-white py-2 px-4 ml-2 rounded-full"
+          >
             Search
           </button>
         </div>
