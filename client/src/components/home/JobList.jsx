@@ -6,7 +6,7 @@ import Loader from "../common/Loader";
 
 const Joblist = () => {
   const dispatch = useDispatch();
-
+  //state
   const { jobs, loading, error, search_jobs } = useSelector(
     (state) => state.job
   );
@@ -16,7 +16,7 @@ const Joblist = () => {
   }, []);
 
   if (error) {
-    return <h1>{error}</h1>;
+    return <h1 className="text-red-500">{error}</h1>;
   }
 
   let data = [];
