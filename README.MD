@@ -4,6 +4,14 @@ JobSeekr is a full-stack web application that allows users to browse and apply f
 
 ## Screenshots
 
+![JobSeekr Screenshot 1](./client/src/assets/1.jpg)
+
+![JobSeekr Screenshot 2](./client/src/assets/2.jpg)
+
+![JobSeekr Screenshot 3](./client/src/assets/3.jpg)
+
+![JobSeekr Screenshot 4](./client/src/assets/4.jpg)
+
 ## Features
 
 - Browse job listings.
