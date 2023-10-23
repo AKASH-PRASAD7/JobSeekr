@@ -26,7 +26,7 @@ app.listen(port, async () => {
 
 //Routing
 app.use("/job", job);
-// app.use("/applicant", applicant);
+app.use("/applicant", applicant);
 
 app.get("/*", (req, res) => {
   return res.status(404).send("Page Not Found!");

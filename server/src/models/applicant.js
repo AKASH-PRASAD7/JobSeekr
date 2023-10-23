@@ -22,8 +22,14 @@ const applicantSchema = new mongoose.Schema({
 
   appliedJobs: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Job",
+      jobId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Job",
+      },
+      ATS_SCORE: {
+        type: Number,
+        default: 0,
+      },
     },
   ],
 });

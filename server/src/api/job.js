@@ -43,6 +43,67 @@ router.get("/:id", async (req, res) => {
 });
 
 /**
+ * Route     /:search
+ * Des       Search Job
+ * Params    SearchQuery
+ * Access    Public
+ * Method    GET
+ */
+
+router.get("/search/:query", async (req, res) => {
+  try {
+    const query = req.params.query;
+
+    const jobs = await Job.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { description: { $regex: query, $options: "i" } },
+        { location: { $regex: query, $options: "i" } },
+        { skills: { $in: [query] } },
+      ],
+    });
+
+    res.json(jobs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error searching jobs" });
+  }
+});
+
+/**
+ * Route     /filter/query
+ * Des       Filter Jobs
+ * Params    none
+ * Access    Public
+ * Method    GET
+ */
+
+// filter/query?skills=JavaScript,React&experienceLevel=Mid
+
+router.get("/filter/query", async (req, res) => {
+  try {
+    const { skills, experienceLevel } = req.query;
+
+    const query = {};
+
+    if (skills) {
+      query.skills = { $in: skills.split(",") };
+    }
+
+    if (experienceLevel) {
+      query.experienceLevel = experienceLevel;
+    }
+
+    const filteredJobs = await Job.find(query);
+
+    return res.status(200).json(filteredJobs);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+/**
  * Route     /job
  * Des       Add a job
  * Params    ID
