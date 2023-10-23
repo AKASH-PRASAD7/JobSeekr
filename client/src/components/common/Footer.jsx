@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="text-gray-400">
             <p className="text-center">
               &copy; {new Date().getFullYear()}{" "}
-              {`JobSeekr. All rights reserved. Designed by Akash Prasad`}
+              {`JobSeekr. All rights reserved. Designed by `}
               <a
                 target="_blank"
                 rel="noreferrer"
